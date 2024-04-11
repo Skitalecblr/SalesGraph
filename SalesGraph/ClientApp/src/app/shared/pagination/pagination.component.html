@@ -1,0 +1,15 @@
+<div class="pagination">
+  <button class="btn btn-primary" [disabled]="currentPage === 1" (click)="changePage(1)">
+    <i class="bi bi-arrow-left"></i><i class="bi bi-arrow-left"></i> {{ 1 }}
+  </button>
+  <button class="btn btn-primary" [disabled]="currentPage === 1" (click)="changePage(currentPage - 1)">
+    <i class="bi bi-arrow-left"></i> Prev
+  </button>
+  <button class="btn btn-primary" *ngIf="totalPages > 0">{{ currentPage }}</button>
+  <button class="btn btn-primary" [disabled]="currentPage === totalPages" (click)="changePage(currentPage + 1)">
+    Next <i class="bi bi-arrow-right"></i>
+  </button>
+  <button class="btn btn-primary" [disabled]="currentPage === totalPages" (click)="changePage(totalPages)">
+    {{ totalPages }} <i class="bi bi-arrow-right"></i><i class="bi bi-arrow-right"></i>
+  </button>
+</div>

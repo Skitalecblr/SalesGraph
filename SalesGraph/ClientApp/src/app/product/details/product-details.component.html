@@ -1,0 +1,24 @@
+<div class="container">
+  <div *ngIf="productDetail" class="card product-detail">
+    <div class="card-body">
+      <div class="product-detail-item">
+        <label class="label">Product Name:</label>
+        <span class="value">{{ productDetail.name }}</span>
+      </div>
+      <div class="product-detail-item">
+        <label class="label">Product Cost:</label>
+        <span class="value">{{ productDetail.cost | currency }}</span>
+      </div>
+      <div class="product-detail-item">
+        <label class="label">Total Sales:</label>
+        <span class="value">{{ productDetail.totalSales }}</span>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="!productDetail" class="card loading">
+    <div class="card-body text-center">
+      <p>Loading...</p>
+    </div>
+  </div>
+  <app-sale-list [productId]="productId"></app-sale-list>
+</div>

@@ -1,0 +1,14 @@
+<div class="container">
+  <div *ngIf="productList">
+    <h2 class="title">Product List</h2>
+    <ul class="list-group product-list">
+      <li *ngFor="let product of productList.products" class="list-group-item product-item" (click)="navigateToDetails(product.productId)">
+        {{ product.name }}
+      </li>
+    </ul>
+  </div>
+
+  <div *ngIf="!productList" class="loading">
+    <p>Loading...</p>
+  </div>
+</div>

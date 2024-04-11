@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row mb-3">
+    <div class="col plotly-editor">
+      <label for="timePeriodDropdown" class="input-label">Period:</label>
+      <select class="custom-select" id="timePeriodDropdown" [(ngModel)]="currentPeriod" (change)="buildGraph()">
+        <option value="4">Quarter</option>
+        <option value="3">Month</option>
+        <option value="2">Week</option>
+        <option value="1">Day</option>
+      </select>
+      <label for="startDatePicker" class="input-label">Start&nbsp;Date:</label>
+      <input type="date" class="form-control" [(ngModel)]="startDate" [ngModel]="startDate | date: dateFormat" id="startDatePicker" (change)="buildGraph()">
+      <label for="endDatePicker" class="input-label">End&nbsp;Date:</label>
+      <input type="date" class="form-control" [(ngModel)]="endDate" [ngModel]="endDate | date: dateFormat" id="endDatePicker" (change)="buildGraph()">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col position-relative">
+      <div id="barChart"></div>
+      <div class="loading-spinner" *ngIf="loading"></div>
+    </div>
+  </div>
+</div>

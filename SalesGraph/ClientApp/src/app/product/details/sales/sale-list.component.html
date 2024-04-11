@@ -1,0 +1,41 @@
+<div class="container shadow">
+  <div class="sales-list">
+    <!-- Add loading spinner -->
+    <div *ngIf="loading" class="loading-overlay">
+      <div class="spinner-border text-primary" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+
+    <!-- Sale list table -->
+    <button class="btn btn-success mb-3" (click)="startEditing(getDefaultSale())">
+      <i class="bi bi-plus"></i> Register Sale
+    </button>
+    <table class="table">
+      <!-- Table headers -->
+      <thead class="thead-light">
+      <tr>
+        <th>Sale Date</th>
+        <th>Quantity</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <!-- Table body -->
+      <tbody>
+      <tr *ngFor="let saleItem of saleList.sales; let i = index" [class.zebra-row]="i % 2 === 0">
+        <td>{{ saleItem.saleDate | date:'shortDate' }}</td>
+        <td>{{ saleItem.quantity }}</td>
+        <td>
+          <button class="btn btn-light" (click)="startEditing(saleItem)">
+            <i class="bi bi-pencil-square"></i>
+          </button>
+          <button class="btn btn-light" (click)="deleteSaleItem(saleItem.id)">
+            <i class="bi bi-x-square"></i>
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <app-pagination [totalPages]="saleList.totalPages" [currentPage]="currentPage" (pageChange)="onPageChange($event)"></app-pagination>
+  </div>
+</div>
